@@ -20,7 +20,7 @@ bool czyTeSameElementy(const pair<int,int> para1, const pair<int,int> para2) {
 vector<pair<int,int>> znajdzPary(int A[], int n, int k) {
     vector<pair<int,int>> Z;
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n-1; i++) {
         for (int j = i + 1; j < n; j++) {
 
             if (abs(A[j] - A[i]) == abs(k)) {
