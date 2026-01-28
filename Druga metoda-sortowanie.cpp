@@ -6,7 +6,7 @@
 #include <functional>
 using namespace std;
 
-void wyswietlTablice(const vector<int>& A) { //fucnkja wyswietlajaca tablice
+void wyswietlTablice(const vector<int>& A) { //funkcja wyswietlajaca tablice
     for (int x : A) {    //skrócony zapis petli foreach w c++
         cout << x << " ";
     }
@@ -15,7 +15,7 @@ void wyswietlTablice(const vector<int>& A) { //fucnkja wyswietlajaca tablice
 vector<pair<int,int>> znajdzPary(const vector<int>& A, int k) { 
     int n = A.size();
     int i = 0, j = i + 1;
-	vector<pair<int,int>> pLiczb; 
+	vector<pair<int,int>> pLiczb; // wektor przechowujący znalezione pary
     while (i < n && j < n) {
         if (i == j) {
             j++;
@@ -23,13 +23,14 @@ vector<pair<int,int>> znajdzPary(const vector<int>& A, int k) {
         
         if (A[j] - A[i] == abs(k)) {
 				 
-        		if (k > 0) {
+        		if (k > 0) { // w zależności od znaku k zapisujemy parę w odpowiedniej kolejności
         			pair<int,int> para(A[i],A[j]);
         				pLiczb.push_back(para);
             	}else {
             		pair<int,int> para(A[j],A[i]);
             		pLiczb.push_back(para);
             	}
+            	
             int vi = A[i], vj = A[j];
             while (i < n && A[i] == vi) i++;
             while (j < n && A[j] == vj) j++;
@@ -52,7 +53,7 @@ int main() {
     wyswietlTablice(A);
     cout << "]";
 
-    sort(A.begin(), A.end());
+    sort(A.begin(), A.end()); //sortowanie rosnąco tablicy
 
     cout << "\nPodaj k: ";
     cin >> k;
@@ -64,7 +65,7 @@ int main() {
     cout << "]"<<endl<<endl;
     
 	
-	vector<pair<int,int>> pary=znajdzPary(A, k); //funckja zwraca do zmiennej pary vector par liczb ktore spelniaja warunek 
+	vector<pair<int,int>> pary=znajdzPary(A, k); //funckja zwraca do zmiennej pary, vector par liczb ktore spelniaja warunek 
 	
 	if(pary.size()==0){
 		cout<<"Brak par o podanej roznicy k"<<endl;
